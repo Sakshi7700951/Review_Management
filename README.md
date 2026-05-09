@@ -1,40 +1,16 @@
-# Backend – Python Flask API
+# React + Vite
 
-## Setup
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
-```
+Currently, two official plugins are available:
 
-The API runs on **http://localhost:5000**
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Endpoints
+## React Compiler
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/health` | Health check |
-| GET | `/api/filters` | Returns unique emails & phones from CSV |
-| GET | `/api/doctors?email=X&phone=Y&page=1&pageSize=50` | Filtered doctor list |
-| GET | `/api/reviews?email=X&location=Y&page=1&pageSize=10` | All reviews (ReviewHub) |
-| GET | `/api/critical-reviews?email=X&location=Y` | Critical reviews only (Dashboard, cached 4h) |
-| GET | `/api/stats?email=X&location=Y` | Aggregate stats for stat cards |
-| POST | `/api/reply` | Proxy reply to GMB |
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Reply Body
-```json
-{
-  "email": "gmbaccess5@gmail.com",
-  "text": "Thank you for your feedback!",
-  "name": "accounts/.../reviews/..."
-}
-```
+## Expanding the ESLint configuration
 
-## CSV Database
-`HarshDB_manipalfinaldatas.csv` must be in the same directory as `app.py`.
-
-## Critical Review Refresh
-Critical reviews (1–2 star) are cached in memory and auto-refreshed every **4 hours** per location using a background thread.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
